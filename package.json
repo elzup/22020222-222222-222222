@@ -1,0 +1,9 @@
+{
+  "name": "22020222-222222-222222",
+  "version": "2.2.2",
+  "main": "2.js",
+  "scripts": {
+    "start": "node 2.js > out.log"
+  },
+  "license": "MIT"
+}
