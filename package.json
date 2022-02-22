@@ -3,7 +3,8 @@
   "version": "2.2.2",
   "main": "2.js",
   "scripts": {
-    "start": "node 2.js > out.log"
+    "start": "node 2.js > out.log",
+    "looktime": "(cd ./felis-22020222 && ./parallel-run.sh)"
   },
   "license": "MIT",
   "dependencies": {
