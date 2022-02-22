@@ -13,6 +13,8 @@ const toYmdhms = (mcsStr) => {
   return isoStr.substring(0, isoStr.length - 1) + subMsMicro
 }
 
+const store = { hit: false }
+
 files.forEach((path) => {
   const filePath = `${OUT_PATH}/${path}`
   const text = fs.readFileSync(`${OUT_PATH}/${path}`, 'utf8')
@@ -29,9 +31,19 @@ files.forEach((path) => {
     if (point > 10) {
       if (!lineCountMap[point]) lineCountMap[point] = []
       lineCountMap[point].push(line)
-      if (point == 18) console.log(`${filePath}:${i}`)
+      if (point === 18) {
+        console.log(`${filePath}:${i}`)
+        store.hit = i
+      }
     }
   })
+
+  if (store.hit) {
+    for (let i = store.hit - 30; i < store.hit + 30; i++) {
+      console.log(lines[i])
+    }
+    store.hit = false
+  }
 })
 
 const toj = (a) => JSON.stringify(a, null, '\t')
