@@ -5,16 +5,27 @@ const files = fs.readdirSync(OUT_PATH)
 
 const lineCountMap = {}
 
+// ex. 1645539605662958000
+const toYmdhms = (mcsStr) => {
+  const msStr = mcsStr.substring(0, 13)
+  const subMsMicro = mcsStr.substring(13, 16)
+  const isoStr = new Date(Number(msStr)).toISOString()
+  return isoStr.substring(0, isoStr.length - 1) + subMsMicro
+}
+
 files.forEach((path) => {
   const filePath = `${OUT_PATH}/${path}`
   const text = fs.readFileSync(`${OUT_PATH}/${path}`, 'utf8')
-  const lines = text.trim().split('\n')
+  const lines = text
+    .trim()
+    .split('\n')
+    .filter((v) => v.length === 19)
+    .map(toYmdhms)
 
   console.log(`${path} ${lines[0]} ~ ${lines[lines.length - 1]}`)
 
   lines.forEach((line, i) => {
     const point = line.split('').filter((c) => c === '2').length
-    // ex. 2022-02-22 21:22:20.148534
     if (point > 10) {
       if (!lineCountMap[point]) lineCountMap[point] = []
       lineCountMap[point].push(line)

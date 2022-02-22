@@ -1,9 +1,7 @@
 use chrono::prelude::*;
 
-// n=1 720000 4s
-// n=22 720000 40s
-// for _ in 0..72000 {
-const L: usize = 720000;
+// const L: usize = 7200000; // 1.8s
+const L: usize = 22222222; // 6s
 
 fn main() {
     println!("{}", Utc::now());
