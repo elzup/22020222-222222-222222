@@ -18,7 +18,7 @@ files.forEach((path) => {
     if (point > 10) {
       if (!lineCountMap[point]) lineCountMap[point] = []
       lineCountMap[point].push(line)
-      if (point == 16) console.log(`${filePath}:${i}`)
+      if (point == 18) console.log(`${filePath}:${i}`)
     }
   })
 })
