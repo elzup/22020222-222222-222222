@@ -1,5 +1,5 @@
 const microtime = require('microtime')
 
-for (let i = 0; i < 1000; i++) {
-  console.log([process.hrtime(), Date.now(), microtime.nowStruct()])
+for (let i = 0; i < 10000; i++) {
+  console.log(microtime.now())
 }
