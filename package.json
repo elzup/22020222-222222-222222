@@ -3,7 +3,10 @@
   "version": "2.2.2",
   "main": "2.js",
   "scripts": {
-    "looktime": "(cd ./felis-22020222 && ./parallel-run.sh)",
+    "start": "(cd ./felis-22020222 && ./target/release/felis-22020222 > out/out.txt)",
+    "build": "(cd ./felis-22020222 && cargo build --release)",
+    "check": "node --max-old-space-size=10000 analyze.js",
+    "unused:looktime": "(cd ./felis-22020222 && ./parallel-run.sh)",
     "unused:start": "node 2.js > out/out.log"
   },
   "license": "MIT",
